@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <strong>Serve Data with Low-Latency</strong>
+    <em><strong>Serve Data with Low-Latency</strong></em>
 </p>
 
 
