@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    Serve Data with Low-Latency with <em>Data-API</em>
+    Serve Data with Low-Latency
 </p>
 
 
