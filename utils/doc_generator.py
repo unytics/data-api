@@ -1,19 +1,11 @@
 import json
 
-def generate_openapi_schema_multiple(endpoints):
-    """
-    Generate a JSON schema for OpenAPI documentation (GET operations) for multiple endpoints.
+def generate_openapi_schema(endpoints):
 
-    Args:
-        endpoints (list of dict): List of endpoints with name, description, and columns.
-
-    Returns:
-        dict: JSON schema for the OpenAPI documentation.
-    """
     schema = {
         "openapi": "3.0.0",
         "info": {
-            "title": "API Documentation",
+            "title": "DataAPI Documentation",
             "description": "Auto-generated OpenAPI documentation for multiple endpoints.",
             "version": "1.0.0"
         },
@@ -66,28 +58,3 @@ def generate_openapi_schema_multiple(endpoints):
         }
 
     return schema
-
-# Example Usage
-endpoints = [
-    {
-        "endpoint_name": "getUsers",
-        "description": "Retrieve a list of users.",
-        "columns": {
-            "username": "string",
-            "email": "string",
-            "age": "integer"
-        }
-    },
-    {
-        "endpoint_name": "getProducts",
-        "description": "Retrieve a list of products.",
-        "columns": {
-            "productName": "string",
-            "price": "number",
-            "inStock": "boolean"
-        }
-    }
-]
-
-schema = generate_openapi_schema_multiple(endpoints)
-print(json.dumps(schema, indent=4))
