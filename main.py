@@ -10,7 +10,6 @@ import config
 
 import google.auth
 
-creds, project = google.auth.default()
 cached_endpoints = []
 
 PROJECT = os.environ.get('PROJECT')
