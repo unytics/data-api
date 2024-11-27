@@ -17,9 +17,9 @@
 
 - `GET /` returns the OpenAPI specification generated on-the-fly from schemas stored in Datastore.
 - `GET /docs` returns the specification rendered with Swagger-UI.
-- `GET /<resource_name>/` returns a list of 100 entities of the kind resource_name.
-- `GET /<resource_name>/<key>` returns the entity of the kind resource_name that has that key.
-- `GET /<resource_name>/foo=bar` returns a list of 100 entities of the kind resource_name where the property/field foo equals bar.
+- `GET /api/<resource_name>/` returns a list of 100 entities of the kind resource_name.
+- `GET /api/<resource_name>/<key>` returns the entity of the kind resource_name that has that key.
+- `GET /api/<resource_name>/foo=bar` returns a list of 100 entities of the kind resource_name where the property/field foo equals bar.
 
 ## Deploy
 
