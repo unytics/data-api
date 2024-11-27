@@ -25,28 +25,29 @@ datastore = google.cloud.datastore.Client(project=PROJECT)
 @app.before_request
 def init_app():
     global cached_endpoints
-    if not cached_endpoints:
-        print('load endpoints/schema from datastore')
-        cached_endpoints = [
-            {
-                "endpoint_name": "api/getUsers",
-                "description": "Retrieve a list of users.",
-                "columns": {
-                    "username": "string",
-                    "email": "string",
-                    "age": "integer"
-                }
-            },
-            {
-                "endpoint_name": "api/getProducts",
-                "description": "Retrieve a list of products.",
-                "columns": {
-                    "productName": "string",
-                    "price": "number",
-                    "inStock": "boolean"
-                }
+    if cached_endpoints:
+        return
+    print('load endpoints/schema from datastore')
+    cached_endpoints = [
+        {
+            "endpoint_name": "api/getUsers",
+            "description": "Retrieve a list of users.",
+            "columns": {
+                "username": "string",
+                "email": "string",
+                "age": "integer"
             }
-        ]
+        },
+        {
+            "endpoint_name": "api/getProducts",
+            "description": "Retrieve a list of products.",
+            "columns": {
+                "productName": "string",
+                "price": "number",
+                "inStock": "boolean"
+            }
+        }
+    ]
 
     schema = doc_generator.generate_openapi_schema(cached_endpoints)
     swagger.template["paths"].update(schema.get('paths'))
