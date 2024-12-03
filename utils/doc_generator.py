@@ -23,13 +23,13 @@ def generate_openapi_schema(endpoints):
                 "summary": description,
                 "parameters": [
                     {
-                        "name": field,
+                        "name": field.get('name'),
                         "in": "query",
                         "required": False,
-                        "schema": {"type": field_type},
-                        "description": f"Query parameter for {field}"
+                        "schema": {"type": field.get('type')},
+                        "description": field.get('description', f"Query parameter for {field.get('name')}")
                     }
-                    for field, field_type in columns.items()
+                    for field in columns
                 ],
                 "responses": {
                     "200": {
@@ -44,7 +44,7 @@ def generate_openapi_schema(endpoints):
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
-                                                    field: {"type": field_type} for field, field_type in columns.items()
+                                                    field.get('name'): {"type": field.get('type')} for field in columns
                                                 }
                                             }
                                         }

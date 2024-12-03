@@ -1,9 +1,8 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect, url_for
 from flasgger import Swagger
 from google.cloud.datastore import query as filters
 import google.auth
-from collections import defaultdict
 
 from utils import doc_generator, transformer
 import config
@@ -25,22 +24,21 @@ def init_app():
     global cached_endpoints
     if cached_endpoints:
         return
-    
-    query = datastore.query(namespace="_schema")
+        
+    query = datastore.query(kind="_schema")
     schema_entities = list(query.fetch())
-    kinds = defaultdict(dict)
+    
+    for result in schema_entities:
+        endpoint = result.get("datastore_path", "/api").split('/')[-1]
+        columns = [
+                dict(column.items()) for column in result.get("columns", [])
+            ]
+        
 
-    for schema_entity in schema_entities:
-        kind = schema_entity.key.kind
-        field_name = schema_entity["name"]
-        field_type = schema_entity["type"]
-        kinds[kind][field_name] = field_type
-
-    for kind, fields in kinds.items():
         cached_endpoints.append({
-            "endpoint_name": f"api/{kind}",
-            "description": f"Retrieve a list of {kind}.",
-            "columns": fields,
+            "endpoint_name": f"api/{endpoint}",
+            "description": f"Retrieve a list of {endpoint}.",
+            "columns": columns,
         })
 
     schema = doc_generator.generate_openapi_schema(cached_endpoints)
@@ -50,7 +48,8 @@ def init_app():
 @app.route("/")
 def hello_world():
     """Example Hello World route."""
-    return f"Hello paul!"
+    return redirect('/docs')
+
 
 
 @app.route("/api/<resource_name>", defaults={"id": None})
@@ -69,7 +68,6 @@ def list_records(resource_name, id):
     for key, value in request.args.items():
         if not value:
             continue
-        value = transformer.string2number(value)
         query.add_filter(filter=filters.PropertyFilter(key, "=", value))
     results = list(query.fetch())
     return jsonify(results), 200
