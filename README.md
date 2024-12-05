@@ -56,7 +56,7 @@ call bigfunctions.eu.export_table_to_datastore(
 );
 ```
 
-> 💡 If you don't want to pass by public bigfunction, you may prefer to deploy the function in your own BigQuery project. You can check the [doc here](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
+> 💡 If you don't want to pass by public bigfunction, you can deploy the function in your own BigQuery project. You can check the [doc here](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
 
 **Write data directly**
 ...
