@@ -30,7 +30,9 @@ Features include:
 Run
 
 ```
-gcloud run deploy data-api --source . --set-env-vars "PROJECT=$PROJECT,DATABASE=$DATABASE"
+gcloud run deploy data-api \
+  --source . \
+  --set-env-vars "PROJECT=$PROJECT,DATABASE=$DATABASE"
 ```
 
 with:
@@ -44,13 +46,17 @@ with:
 
 **Export BigQuery table to datastore for automatic discovery by data-api**
 
-To export a BigQuery table (data & schema)  into `default` namespace of `your-database` in `your-project`, you can run from your BigQuery Console (no install needed):
+To export a BigQuery table (data & schema)  into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
 
-```
-call bigfunctions.eu.export_table_to_datastore('your-project.dataset.table', 'user_id', 'your-project/your-database/default/users');
+```sql
+call bigfunctions.eu.export_table_to_datastore(
+  'your-project.dataset.table',
+  'user_id',
+  'your-project/your-database/default/users'
+);
 ```
 
-> If you want total control, you may prefer to deploy the function in your own BigQuery project. You can check the [doc here](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
+> 💡 If you don't want to pass by public bigfunction, you may prefer to deploy the function in your own BigQuery project. You can check the [doc here](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
 
 **Write data directly**
 ...
