@@ -11,11 +11,15 @@
 
 <br>
 
+## Features
+
 `data-api` discovers your datastore data and exposes it as a REST read-only API. Features include:
 
 - generates open-api spec based on your datastore data
 - generates Swagger-UI documentation page based on your datastore data
 - expose datastore data via key-value or property-filtering. 
+
+<br>
 
 ## Routes
 
@@ -24,6 +28,8 @@
 - `GET /api/<resource_name>/` returns a list of 100 entities of the kind resource_name.
 - `GET /api/<resource_name>/<key>` returns the entity of the kind resource_name that has that key.
 - `GET /api/<resource_name>/?foo=bar` returns a list of 100 entities of the kind resource_name where the property/field foo equals bar.
+
+<br>
 
 ## Deploy
 
