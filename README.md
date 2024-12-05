@@ -17,11 +17,36 @@
 
 - generates open-api spec based on your datastore data
 - generates Swagger-UI documentation page based on your datastore data
-- expose datastore data via key-value or property-filtering. 
+- expose datastore data via key-value or property-filtering.
+
+> NOTE: what we call *datastore* in this document is *firestore in datastore mode*.
 
 <br>
 
-## Routes
+## Deploy
+
+Run
+
+```
+gcloud run deploy data-api --source . --set-env-vars "PROJECT=$PROJECT,DATABASE=$DATABASE"
+```
+
+with:
+
+- `$PROJECT` the Google Cloud Project where you datastore database resides
+- `$DATABASE` the name of your Google Cloud Project datastore database (if not given, it will check on default database).
+
+<br>
+
+## Write Data to Datastore
+
+...
+
+<br>
+
+## Exposed Routes
+
+
 
 - `GET /` returns the OpenAPI specification generated on-the-fly from schemas stored in Datastore.
 - `GET /docs` returns the specification rendered with Swagger-UI.
@@ -31,10 +56,5 @@
 
 <br>
 
-## Deploy
 
-Run
 
-```
-gcloud run deploy data-api --source . --set-env-vars "PROJECT=$PROJECT"
-```
