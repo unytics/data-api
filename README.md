@@ -44,7 +44,7 @@ with:
 
 ## Write Data to Datastore 
 
-**Export BigQuery table to datastore for automatic discovery by data-api**
+**1. Export BigQuery table to datastore for automatic discovery by data-api**
 
 To export a BigQuery table (data & schema)  into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
 
@@ -58,7 +58,10 @@ call bigfunctions.eu.export_table_to_datastore(
 
 > 💡 If you don't want to pass by public bigfunction, you can deploy the function in your own BigQuery project. You can check the [doc here](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
 
-**Write data directly**
+<br>
+
+
+**2. Write data directly**
 ...
 
 <br>
