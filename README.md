@@ -52,6 +52,9 @@ call bigfunctions.eu.export_table_to_datastore('your-project.dataset.table', 'us
 
 > If you want total control, you may prefer to deploy the function in your own BigQuery project. You can check the [doc here](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
 
+**Write data directly**
+...
+
 <br>
 
 ## Exposed Routes
