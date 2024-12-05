@@ -69,9 +69,8 @@ call bigfunctions.eu.export_table_to_datastore(
 
 *schema*: 
 
-! Replace `$PROJECT` and `$DATABASE `
-
 ```json
+// schema
 {
   "columns": [
     {
