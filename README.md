@@ -29,7 +29,7 @@ Features include:
 
 Run
 
-```
+```bash
 gcloud run deploy data-api \
   --source . \
   --set-env-vars "PROJECT=$PROJECT,DATABASE=$DATABASE"
