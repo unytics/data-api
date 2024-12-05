@@ -36,7 +36,7 @@ gcloud run deploy data-api --source . --set-env-vars "PROJECT=$PROJECT,DATABASE=
 with:
 
 - `$PROJECT` the Google Cloud Project where you datastore database resides
-- `$DATABASE` the name of your Google Cloud Project datastore database (if not given, it will check on default database).
+- `$DATABASE` the name of your datastore database (if not given, it will check on default database).
 
 <br>
 
