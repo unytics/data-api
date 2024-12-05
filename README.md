@@ -44,7 +44,7 @@ with:
 
 ## Write Data to Datastore 
 
-**1. Export BigQuery table to datastore for automatic discovery by data-api**
+### 1. Export BigQuery table to datastore for automatic discovery by data-api
 
 To export a BigQuery table (data & schema)  into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
 
@@ -61,16 +61,15 @@ call bigfunctions.eu.export_table_to_datastore(
 <br>
 
 
-**2. Write data directly**
+### 2. Write data directly
 
 1. Open the [Google Cloud Datastore Console](https://console.cloud.google.com/datastore/)
 2. Add the schema below as en entity on namespace `[default]` and kind `_schema` (no key required)
 3. Add the record below as en entity on namespace `[default]` and kind `customers` with `key` equal to `1`
 
-*schema*: 
+**schema**: 
 
 ```json
-// schema
 {
   "columns": [
     {
@@ -93,7 +92,7 @@ call bigfunctions.eu.export_table_to_datastore(
 }
 ```
 
-*record*
+**record**
 
 ```json
 ```
