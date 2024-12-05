@@ -13,7 +13,9 @@
 
 ## Features
 
-`data-api` discovers your datastore data and exposes it as a REST read-only API. Features include:
+`data-api` discovers your datastore data and exposes it as a REST read-only API. 
+
+Features include:
 
 - generates open-api spec based on your datastore data
 - generates Swagger-UI documentation page based on your datastore data
