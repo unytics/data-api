@@ -62,7 +62,44 @@ call bigfunctions.eu.export_table_to_datastore(
 
 
 **2. Write data directly**
-...
+
+1. Open the [Google Cloud Datastore Console](https://console.cloud.google.com/datastore/)
+2. Add the schema below as en entity on namespace `[default]` and kind `_schema` (no key required)
+3. Add the record below as en entity on namespace `[default]` and kind `customers` with `key` equal to `1`
+
+*schema*: 
+
+! Replace `$PROJECT` and `$DATABASE `
+
+```json
+{
+  "columns": [
+    {
+      "description": "",
+      "type": "STRING",
+      "name": "customer_id"
+    },
+    {
+      "description": "",
+      "type": "STRING",
+      "name": "first_name"
+    },
+    {
+      "description": "",
+      "type": "FLOAT64",
+      "name": "customer_lifetime_value"
+    }
+  ],
+  "kind": "customers"
+}
+```
+
+*record*
+
+```json
+```
+
+
 
 <br>
 
