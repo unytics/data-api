@@ -17,7 +17,7 @@
 
 Features include:
 
-- generates open-api spec based on your datastore data
+- generates open-api spec definition based on your datastore data
 - generates Swagger-UI documentation page based on your datastore data
 - expose datastore data via key-value or property-filtering.
 
