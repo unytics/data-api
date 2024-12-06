@@ -43,7 +43,7 @@ with:
 
 <br>
 
-## Write Data to Datastore 
+## Write Data to Datastore ✍️
 
 We present below:
 
