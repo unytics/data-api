@@ -19,6 +19,25 @@ swagger = Swagger(app, template=config.SWAGGER_TEMPLATE)
 datastore = google.cloud.datastore.Client(project=PROJECT)
 
 
+def query_datastore(resource_name, id, namespace=None):
+    if id:
+        key = datastore.key(resource_name, transformer.string2number(id))
+        entity = datastore.get(key)
+        if entity:
+            return jsonify(entity), 200
+        else:
+            return jsonify({"error": "Entity not found"}), 404
+            
+    query = datastore.query(kind=resource_name)
+
+    for key, value in request.args.items():
+        if not value:
+            continue
+        query.add_filter(filter=filters.PropertyFilter(key, "=", value))
+    results = list(query.fetch())    
+    return jsonify(results), 200
+
+
 @app.before_request
 def init_app():
     global cached_endpoints
@@ -55,22 +74,12 @@ def hello_world():
 @app.route("/api/<resource_name>", defaults={"id": None})
 @app.route("/api/<resource_name>/<id>")
 def list_records(resource_name, id):
-    if id:
-        key = datastore.key(resource_name, transformer.string2number(id))
-        entity = datastore.get(key)
-        if entity:
-            return jsonify(entity), 200
-        else:
-            return jsonify({"error": "Entity not found"}), 404
-            
-    query = datastore.query(kind=resource_name)
+    return query_datastore(resource_name, id)
 
-    for key, value in request.args.items():
-        if not value:
-            continue
-        query.add_filter(filter=filters.PropertyFilter(key, "=", value))
-    results = list(query.fetch())
-    return jsonify(results), 200
+@app.route("<namespace>/api/<resource_name>", defaults={"id": None})
+@app.route("<namespace>/api/<resource_name>/<id>")
+def list_records(namespace, resource_name, id):
+    return query_datastore(resource_name, id, namespace=namespace)
 
 
 if __name__ == "__main__":
