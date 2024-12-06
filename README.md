@@ -45,12 +45,14 @@ with:
 
 ## Write Data to Datastore 
 
-We show you below 
+We present below:
 
-- how to write data manually to datastore at the expected format OR
-- how you can export a BigQuery table in datastore for automatic discovery with one sql query.
+1. how to write data manually to datastore at the expected format OR
+2. how you can export a BigQuery table in datastore at expected format with one sql query.
 
-### 1. Write data directly
+
+
+### 1. Write data manually to datastore
 
 1. Open the [Google Cloud Datastore Console](https://console.cloud.google.com/datastore/)
 2. Add the schema below as en entity on namespace `[default]` and kind `_schema` (no key required)
