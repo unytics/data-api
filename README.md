@@ -56,18 +56,13 @@ We present below:
 
 1. Open the [Google Cloud Datastore Console](https://console.cloud.google.com/datastore/)
 2. Add the schema below as en entity on namespace `[default]` and kind `_schema` (no key required)
-3. Add the record below as en entity on namespace `[default]` and kind `customers` with `key` equal to `1`
+3. Add the record below as en entity on namespace `[default]` and kind `customers` with `key` equal to `123`
 
 **Schema**
 
 ```json
 {
   "columns": [
-    {
-      "description": "",
-      "type": "STRING",
-      "name": "customer_id"
-    },
     {
       "description": "",
       "type": "STRING",
@@ -87,7 +82,6 @@ We present below:
 
 ```json
 {
-  "customer_id": 123,
   "first_name": "Paulo",
   "customer_lifetime_value": 8753.35,
 }
