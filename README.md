@@ -62,6 +62,7 @@ with:
 
 ```json
 {
+  "kind": "customers",
   "columns": [
     {
       "description": "First name",
@@ -73,8 +74,7 @@ with:
       "type": "FLOAT64",
       "name": "customer_lifetime_value"
     }
-  ],
-  "kind": "customers"
+  ]
 }
 ```
 
@@ -83,7 +83,7 @@ with:
 ```json
 {
   "first_name": "Paulo",
-  "customer_lifetime_value": 8753.35,
+  "customer_lifetime_value": 8753.35
 }
 ```
 
