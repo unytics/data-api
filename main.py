@@ -78,7 +78,7 @@ def list_records(resource_name, id):
 
 @app.route("<namespace>/api/<resource_name>", defaults={"id": None})
 @app.route("<namespace>/api/<resource_name>/<id>")
-def list_records(namespace, resource_name, id):
+def list_records_in_namespace(namespace, resource_name, id):
     return query_datastore(resource_name, id, namespace=namespace)
 
 
