@@ -43,7 +43,7 @@ with:
 
 <br>
 
-## Write Data to Datastore ✍️
+## 3. Write Data to Datastore ✍️
 
 We present below:
 
@@ -52,7 +52,7 @@ We present below:
 
 
 
-### 1. Write data manually to datastore
+### A. Write data manually to datastore
 
 1. Open the [Google Cloud Datastore Console](https://console.cloud.google.com/datastore/)
 2. Add the schema below as en entity on namespace `[default]` and kind `_schema` (no key required)
@@ -91,7 +91,7 @@ We present below:
 <br>
 
 
-### 2. Export BigQuery table to datastore
+### B. Export BigQuery table to datastore
 
 To export a BigQuery table (data & schema)  into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
 
