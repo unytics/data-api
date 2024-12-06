@@ -115,12 +115,20 @@ Once you've deployed `data-api` & wrote data to datastore (+ give datastore.user
 
 **Exposed Routes**
 
-- `GET /<namespace>/` returns the OpenAPI specification generated on-the-fly from schemas stored in Datastore.
+By default, default namespace is exposed:
+
+- `GET /` returns the OpenAPI specification generated on-the-fly from schemas stored in Datastore.
+- `GET /docs` returns the specification rendered with Swagger-UI.
+- `GET /api/<resource_name>/` returns a list of 100 entities of the kind resource_name.
+- `GET /api/<resource_name>/<key>` returns the entity of the kind resource_name that has that key.
+- `GET /api/<resource_name>/?foo=bar` returns a list of 100 entities of the kind resource_name where the property/field foo equals bar.
+
+But you can specify any namespace like this:
+
 - `GET /<namespace>/docs` returns the specification rendered with Swagger-UI.
 - `GET /<namespace>/api/<resource_name>/` returns a list of 100 entities of the kind resource_name.
 - `GET /<namespace>/api/<resource_name>/<key>` returns the entity of the kind resource_name that has that key.
 - `GET /<namespace>/api/<resource_name>/?foo=bar` returns a list of 100 entities of the kind resource_name where the property/field foo equals bar.
-
 
 
 
