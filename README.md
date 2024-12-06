@@ -58,7 +58,7 @@ We present below:
 2. Add the schema below as en entity on namespace `[default]` and kind `_schema` (no key required)
 3. Add the record below as en entity on namespace `[default]` and kind `customers` with `key` equal to `1`
 
-**schema**: 
+**Schema**: 
 
 ```json
 {
@@ -83,9 +83,14 @@ We present below:
 }
 ```
 
-**record**
+**Record**
 
 ```json
+{
+  "customer_id": 123,
+  "first_name": "Paulo",
+  "customer_lifetime_value": 8753.35,
+}
 ```
 
 <br>
