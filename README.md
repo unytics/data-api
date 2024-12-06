@@ -92,7 +92,7 @@ We present below:
 
 ### B. Export BigQuery table to datastore
 
-To export a BigQuery table (data & schema)  into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
+To export a BigQuery table (data, schema and descriptions)  into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
 
 ```sql
 call bigfunctions.eu.export_table_to_datastore(
