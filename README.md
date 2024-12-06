@@ -11,7 +11,7 @@
 
 <br>
 
-## Features
+## 🎍 1. Features
 
 **`data-api` discovers your datastore data and exposes it as a REST read-only API.**
 
@@ -26,7 +26,7 @@ Features include:
 
 <br>
 
-## Deploy
+## 🚀 2. Deploy
 
 Run
 
