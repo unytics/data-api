@@ -47,7 +47,7 @@ with:
 
 We present below:
 
-1. how to write data manually to datastore at the expected format OR
+1. how to write data manually to datastore at the expected format
 2. how you can export a BigQuery table in datastore at expected format with one sql query.
 
 
