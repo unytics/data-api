@@ -13,7 +13,7 @@
 
 ## Features
 
-`data-api` discovers your datastore data and exposes it as a REST read-only API. 
+`data-api` discovers your datastore data and exposes it as a REST read-only API (*datastore = "firestore in datastore mode"*)
 
 Features include:
 
@@ -21,7 +21,6 @@ Features include:
 - generates Swagger-UI documentation page based on your datastore data
 - expose datastore data via key-value or property-filtering.
 
-> NOTE: *datastore* <-> *firestore in datastore mode*.
 
 <br>
 
