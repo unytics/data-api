@@ -108,7 +108,7 @@ call bigfunctions.eu.export_table_to_datastore(
 
 <br>
 
-## 4. GET /<namespace>/our Data! 😎
+## 4. GET your Data! 😎
 
 Once you've deployed `data-api` & wrote data to datastore (+ give datastore.user role to cloud run service account) you can GET the documentation and your data on exposed routes:
 
