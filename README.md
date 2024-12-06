@@ -64,12 +64,12 @@ We present below:
 {
   "columns": [
     {
-      "description": "",
+      "description": "First name",
       "type": "STRING",
       "name": "first_name"
     },
     {
-      "description": "",
+      "description": "How much money this customer generated for the company",
       "type": "FLOAT64",
       "name": "customer_lifetime_value"
     }
