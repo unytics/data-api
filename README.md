@@ -13,7 +13,7 @@
 
 ## Features
 
-`data-api` discovers your datastore data and exposes it as a REST read-only API.
+**`data-api` discovers your datastore data and exposes it as a REST read-only API.**
 
 > NOTE: By datastore we mean [firestore in datastore mode](https://cloud.google.com/datastore/docs).
 
