@@ -108,9 +108,12 @@ call bigfunctions.eu.export_table_to_datastore(
 
 <br>
 
-## Exposed Routes
+## GET your Data 😎
+
+Once you've deployed `data-api` & wrote data to datastore (+ give datastore.user role to cloud run service account) you can GET the documentation and your data on exposed routes:
 
 
+**Exposed Routes**
 
 - `GET /` returns the OpenAPI specification generated on-the-fly from schemas stored in Datastore.
 - `GET /docs` returns the specification rendered with Swagger-UI.
