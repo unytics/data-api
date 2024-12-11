@@ -43,7 +43,7 @@ with:
 
 <br>
 
-## Exposed Routes 🚚
+## 3. Exposed Routes 🚚
 
 Data in datastore is organized in a hierarchy: `database/namespace/kind` (similar to the `database/schema/table` hierarchy in relational databases). 
 Inside a `kind` (equivalent to a `table` in relational databases), the `entities` (similar to `rows` in relational database) have a `key` (a string or integer) and a `value` (a dict).
@@ -69,7 +69,7 @@ The deployed cloud run service exposes the following routes:
 <br>
 
 
-## 3. Write Data to Datastore ✍️
+## 4. Write Data to Datastore ✍️
 
 > We present below:
 > 
@@ -134,7 +134,7 @@ call bigfunctions.eu.export_table_to_datastore(
 
 <br>
 
-## 4. GET your Data! 😎
+## 5. GET your Data! 😎
 
 Once you've deployed `data-api` & wrote data to datastore (+ give datastore.user role to cloud run service account) you can GET the documentation and your data on exposed routes:
 
