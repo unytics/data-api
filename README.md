@@ -13,7 +13,7 @@
 
 ## 1. Features 🎍 
 
-**`data-api` exposes your datastore data as a REST read-only API.**
+**`data-api` discovers your datastore data and exposes it as a REST read-only API.**
 
 > 💡 By datastore we mean [firestore in datastore mode](https://cloud.google.com/datastore/docs/concepts/overview).
 
@@ -57,7 +57,6 @@ with:
 
 - exposes the data of the `database` defined as environment variable at deploy time (see above).
 - considers each `namespace` as a different api (which has its own open-api spec definition and Swagger UI).
-- uses metadata stored in `_metadata` kind of the `namespace` to manage queries, documentation and permissions (see "Write Data to datastore" section to learn more on this).
 - exposes the following routes (with `GET` method):
 
 | url                            | Description                                                                                      |
