@@ -57,7 +57,7 @@ with:
 
 - exposes the data of the `database` defined as environment variable at deploy time (see above).
 - considers each `namespace` as a different api (which has its own open-api spec definition and Swagger UI).
-- uses `metadata` defined in `_metadata` kind of the `namespace` to generate the documentation, understand queries and manage permissions (see "Write Data to datastore" section to learn more on this).
+- uses metadata stored in `_metadata` kind of the `namespace` to manage queries, documentation and permissions (see "Write Data to datastore" section to learn more on this).
 - exposes the following routes (with `GET` method):
 
 | url                            | Description                                                                                      |
