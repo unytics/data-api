@@ -60,15 +60,15 @@ with:
 - uses `metadata` defined in `_metadata` kind of the `namespace` to generate the documentation, understand queries and manage permissions (see "Write Data to datastore" section to learn more on this).
 - exposes the following routes (with `GET` method):
 
-| URL                                | Description                                                                          |
-|------------------------------------|--------------------------------------------------------------------------------------|
-| `/`                            | Returns the list of namespaces in `database`                                         |
-| `/<namespace>/`                | Returns details on `namespace` including its `kinds` and urls                        |
-| `/<namespace>/openapi.json`    | Returns the openapi spec definition of the api (generated from `metadata`)           |
-| `/<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the api (generated from `metadata`) |
-| `/<namespace>/<kind>/`         | Returns a list of entity values of `kind`                                            |
-| `/<namespace>/<kind>/<key>`    | Returns the entity value of `key`                                                    |
-| `/<namespace>/<kind>/?foo=bar` | Returns a list of entity values of `kind` for which `foo` property is equal to `bar` |
+| url                            | Description                                                                                      |
+|--------------------------------|--------------------------------------------------------------------------------------            |
+| `/`                            | Returns the list of namespaces in `database`                                                     |
+| `/<namespace>/`                | Returns details on `namespace` api including its `kinds` and urls                                |
+| `/<namespace>/openapi.json`    | Returns the openapi spec definition of the `namespace` api (generated from `metadata`)           |
+| `/<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the `namespace` api (generated from `metadata`) |
+| `/<namespace>/<kind>/`         | Returns a list of entity values of `kind`                                                        |
+| `/<namespace>/<kind>/<key>`    | Returns the entity value of `key`                                                                |
+| `/<namespace>/<kind>/?foo=bar` | Returns a list of entity values of `kind` for which `foo` property is equal to `bar`             |
 
 <br>
 
