@@ -19,9 +19,10 @@
 
 Features include:
 
-- generates open-api spec definition
-- generates Swagger-UI documentation page
+- generate open-api spec definition
+- generate Swagger-UI documentation page
 - expose datastore data via key-value or property-filtering.
+- manage permissions with api-keys or openID tokens.
 
 
 <br>
