@@ -45,25 +45,27 @@ with:
 
 ## 3. Exposed Routes 🚚
 
-Data in datastore is organized in a hierarchy: `database/namespace/kind` (similar to the `database/schema/table` hierarchy in relational databases). 
-Inside a `kind` (equivalent to a `table` in relational databases), the `entities` (similar to `rows` in relational database) have a `key` (a string or integer) and a `value` (a dict).
+Data in datastore is organized in a hierarchy: `database/namespace/kind` (like the `database/schema/table` hierarchy in relational databases). 
+Inside a `kind` (think `table`), the `entities` (think `rows`) have a `key` (a string or integer) and a `value` (a dict).
 
-`data-api` Cloud Run service exposes data:
+`data-api` Cloud Run service:
 
-- of the `database` defined as environment variable at deploy time (see above).
-- with routes following the datastore organization `/namespace/kind/key`
-- by following the constraints defined in `_metadata` kind of the `namespace` (more on this below).
+- exposes the data of the `database` defined as environment variable at deploy time (see above).
+- considers each `namespace` as a different api (which has its own open-api spec definition and Swagger UI).
+- uses `metadata` defined in `_metadata` kind of the `namespace` to generate the documentation, understand queries and manage permissions (see "Write Data to datastore" section to learn more on this).
 
 The deployed cloud run service exposes the following routes:
 
-| `GET /`       | Returns the list of namespaces in `database` |
-|---------------|--------------------------------|
-
-- `GET /` returns a list 
-- `GET /docs` returns the specification rendered with Swagger-UI.
-- `GET /api/<resource_name>/` returns a list of 100 entities of the kind resource_name.
-- `GET /api/<resource_name>/<key>` returns the entity of the kind resource_name that has that key.
-- `GET /api/<resource_name>/?foo=bar` returns a list of 100 entities of the kind resource_name where the property/field foo equals bar.
+| URL                                | Description                                                                          |
+|------------------------------------|--------------------------------------------------------------------------------------|
+| `GET /`                            | Returns the list of namespaces in `database`                                         |
+| `GET /<namespace>/`                | Returns details on `namespace` including its `kinds` and urls                        |
+| `GET /<namespace>/openapi.json`    | Returns the openapi spec definition of the api (generated from `metadata`)           |
+| `GET /<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the api (generated from `metadata`) |
+| `GET /<namespace>/<kind>/`         | Returns a list of entity values of `kind`                                            |
+| `GET /<namespace>/<kind>/<key>`    | Returns the corresponding entity value                                               |
+| `GET /<namespace>/<kind>/?foo=bar` | Returns a list of entity values of `kind` for which `foo` property is equal to `bar` |
+|------------------------------------|--------------------------------------------------------------------------------------|
 
 <br>
 
