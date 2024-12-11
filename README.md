@@ -52,13 +52,12 @@ Inside a `kind` (equivalent to a `table` in relational databases), the `entities
 
 - of the `database` defined as environment variable at deploy time (see above).
 - with routes following the datastore organization `/namespace/kind/key`
-- following the `metadata` stored in the `_metadata` kind of the `namespace`.
+- by following the constraints defined in `_metadata` kind of the `namespace` (more on this below).
 
 The deployed cloud run service exposes the following routes:
 
-|---------------|-----------------|---------------
-| `GET /`       |                 |              |
-|---------------|-----------------|---------------
+| `GET /`       | Returns the list of namespaces in `database` |
+|---------------|--------------------------------|
 
 - `GET /` returns a list 
 - `GET /docs` returns the specification rendered with Swagger-UI.
