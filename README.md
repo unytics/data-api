@@ -59,7 +59,7 @@ with:
 - considers each `namespace` as a different api (which has its own open-api spec definition and Swagger UI).
 - uses `metadata` defined in `_metadata` kind of the `namespace` to generate the documentation, understand queries and manage permissions (see "Write Data to datastore" section to learn more on this).
 
-The deployed cloud run service exposes the following routes:
+The deployed cloud run service exposes the following routes (with `GET` method):
 
 | URL                                | Description                                                                          |
 |------------------------------------|--------------------------------------------------------------------------------------|
