@@ -46,8 +46,8 @@ with:
 
 ## 3. Exposed Routes 🚚
 
-Data in datastore is organized in a hierarchy: `database/namespace/kind` (like the `database/schema/table` hierarchy in relational databases). 
-Inside a `kind` (think `table`), the `entities` (think `rows`) have a `key` (a string or integer) and a `value` (a dict).
+> 💡 Data in datastore is organized in a hierarchy: `database/namespace/kind` (like the `database/schema/table` hierarchy in relational databases). 
+> Inside a `kind` (think `table`), the `entities` (think `rows`) have a `key` (a string or integer) and a `value` (a dict).
 
 `data-api` Cloud Run service:
 
