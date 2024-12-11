@@ -13,14 +13,14 @@
 
 ## 1. Features 🎍 
 
-**`data-api` discovers your datastore data and exposes it as a REST read-only API.**
+**`data-api` exposes your datastore data as a REST read-only API.**
 
 > 💡 By datastore we mean [firestore in datastore mode](https://cloud.google.com/datastore/docs/concepts/overview).
 
 Features include:
 
-- generates open-api spec definition based on your datastore data
-- generates Swagger-UI documentation page based on your datastore data
+- generates open-api spec definition
+- generates Swagger-UI documentation page
 - expose datastore data via key-value or property-filtering.
 
 
