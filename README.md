@@ -68,9 +68,8 @@ The deployed cloud run service exposes the following routes:
 | `GET /<namespace>/openapi.json`    | Returns the openapi spec definition of the api (generated from `metadata`)           |
 | `GET /<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the api (generated from `metadata`) |
 | `GET /<namespace>/<kind>/`         | Returns a list of entity values of `kind`                                            |
-| `GET /<namespace>/<kind>/<key>`    | Returns the corresponding entity value                                               |
+| `GET /<namespace>/<kind>/<key>`    | Returns the entity value of `key`                                                    |
 | `GET /<namespace>/<kind>/?foo=bar` | Returns a list of entity values of `kind` for which `foo` property is equal to `bar` |
-|------------------------------------|--------------------------------------------------------------------------------------|
 
 <br>
 
