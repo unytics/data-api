@@ -89,9 +89,7 @@ gcloud run services describe --format "value(status.url)"
 
 `data-api` is great to create a low-latency API for your **BigQuery** data.
 
-You can export a BigQuery table into datastore with one sql command to make it available to `data-api`.
-
-To export a BigQuery table into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
+You can export a BigQuery table into datastore with one sql command to make it available to `data-api`:
 
 ```sql
 call bigfunctions.eu.export_table_to_datastore(
@@ -101,7 +99,7 @@ call bigfunctions.eu.export_table_to_datastore(
 );
 ```
 
-> 💡 If you don't want to pass by the public bigfunction, you can deploy the function in your own BigQuery project. Check the [function documentation](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
+> 💡 If you don't want to use the public bigfunction, you can deploy the function in your own BigQuery project. Check the [function documentation](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
 
 
 
