@@ -46,6 +46,13 @@ with:
 - `$PROJECT` the Google Cloud Project where you datastore database resides
 - `$DATABASE` the name of your datastore database (if not given, it will use the default database).
 
+
+You can then get the url of your `data-api` Cloud Run Service by running:
+
+```bash
+gcloud run services describe --format "value(status.url)"
+```
+
 <br>
 
 ## 3. Exposed Routes 🚚
@@ -97,6 +104,12 @@ call bigfunctions.eu.export_table_to_datastore(
 
 <br>
 
-## 5. GET your Data! 😎
 
-Once you've deployed `data-api` & wrote data to datastore (+ give datastore.user role to cloud run service account) you can GET the documentation and your data on exposed routes:
+## 5. Contribute 👋
+
+Any contribution is more than welcome 🤗!
+
+- Add a ⭐ on the repo to show your support
+- [Join our Slack](https://join.slack.com/t/unytics/shared_invite/zt-1gbv491mu-cs03EJbQ1fsHdQMcFN7E1Q) and talk with us
+- Raise an issue to raise a bug or suggest improvements
+- Open a PR!
