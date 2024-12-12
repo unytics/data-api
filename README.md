@@ -85,7 +85,11 @@ gcloud run services describe --format "value(status.url)"
 
 
 
-## 4. Export BigQuery table to datastore ✍️
+## 4. [BONUS] Export BigQuery table to datastore ✍️
+
+`data-api` is great to create a low-latency API for your **BigQuery** data.
+
+You can export a BigQuery table into datastore with one sql command to make it available to `data-api`.
 
 To export a BigQuery table into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
 
@@ -113,3 +117,12 @@ Any contribution is more than welcome 🤗!
 - [Join our Slack](https://join.slack.com/t/unytics/shared_invite/zt-1gbv491mu-cs03EJbQ1fsHdQMcFN7E1Q) and talk with us
 - Raise an issue to raise a bug or suggest improvements
 - Open a PR!
+
+<br>
+
+
+## 6. TODO 📝
+
+- manage permissions with a metadata key-value
+- make queries work when filtering with integer (using the datastore schema)
+- extend this concept to other backends
