@@ -25,6 +25,9 @@ Features include:
 - cache responses with configurable duration
 - manage permissions with api-keys or openID tokens.
 
+> 💡 `data-api` is great to create a low-latency API for your **BigQuery** data
+> (that you can export to datastore with one sql query. More below).
+
 
 <br>
 
@@ -74,55 +77,10 @@ with:
 <br>
 
 
-## 4. Write Data to Datastore ✍️
 
-> We present below:
->
-> 1. how to write data manually to datastore at the expected format
-> 2. how you can export a BigQuery table in datastore at expected format with one sql query.
+## 4. Export BigQuery table to datastore ✍️
 
-
-
-### A. Write data manually to datastore ✍️
-
-1. Open the [Google Cloud Datastore Console](https://console.cloud.google.com/datastore/)
-2. Add the schema below as en entity on namespace `[default]` and kind `_schema` (no key required)
-3. Add the record below as en entity on namespace `[default]` and kind `customers` with `key` equal to `123`
-
-**Schema**
-
-```json
-{
-  "kind": "customers",
-  "columns": [
-    {
-      "description": "First name",
-      "type": "STRING",
-      "name": "first_name"
-    },
-    {
-      "description": "How much money this customer generated for the company",
-      "type": "FLOAT64",
-      "name": "customer_lifetime_value"
-    }
-  ]
-}
-```
-
-**Record**
-
-```json
-{
-  "first_name": "Paulo",
-  "customer_lifetime_value": 8753.35
-}
-```
-
-
-
-### B. Export BigQuery table to datastore ✍️
-
-To export a BigQuery table (data, schema and descriptions)  into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
+To export a BigQuery table into `default` namespace of `your-database` in `your-project`, you can run the following query from your BigQuery Console (no install needed):
 
 ```sql
 call bigfunctions.eu.export_table_to_datastore(
@@ -132,7 +90,7 @@ call bigfunctions.eu.export_table_to_datastore(
 );
 ```
 
-> 💡 If you don't want to pass by public bigfunction, you can deploy the function in your own BigQuery project. You can check the [doc here](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
+> 💡 If you don't want to pass by the public bigfunction, you can deploy the function in your own BigQuery project. Check the [function documentation](https://unytics.io/bigfunctions/bigfunctions/export_table_to_datastore/).
 
 
 
