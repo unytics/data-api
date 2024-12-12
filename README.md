@@ -65,8 +65,8 @@ with:
 | `/`                                | Redirects to `/api/`                                                                             |
 | `/api/`                            | Returns the list of namespaces in `database`                                                     |
 | `/api/<namespace>/`                | Returns details on `namespace` api including its `kinds` and urls                                |
-| `/api/<namespace>/openapi.json`    | Returns the openapi spec definition of the `namespace` api (generated from `metadata`)           |
-| `/api/<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the `namespace` api (generated from `metadata`) |
+| `/api/<namespace>/openapi.json`    | Returns the openapi spec definition of the `namespace` api                                       |
+| `/api/<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the `namespace` api                             |
 | `/api/<namespace>/<kind>/`         | Returns a list of entity values of `kind`                                                        |
 | `/api/<namespace>/<kind>/<key>`    | Returns the entity value of `key`                                                                |
 | `/api/<namespace>/<kind>/?foo=bar` | Returns a list of entity values of `kind` for which `foo` property is equal to `bar`             |
