@@ -11,7 +11,7 @@
 
 <br>
 
-## 1. Features 🎍 
+## 1. Features 🎍
 
 **`data-api` discovers your datastore data & exposes them as a REST read-only API.**
 
@@ -22,12 +22,13 @@ Features include:
 - generate open-api spec definition
 - generate Swagger-UI documentation page
 - expose datastore data via key-value or property-filtering.
+- cache responses with configurable duration
 - manage permissions with api-keys or openID tokens.
 
 
 <br>
 
-## 2. Deploy 🚀 
+## 2. Deploy 🚀
 
 Run
 
@@ -59,15 +60,16 @@ with:
 - considers each `namespace` as a different api (which has its own open-api spec definition and Swagger UI).
 - exposes the following routes (with `GET` method):
 
-| url                            | Description                                                                                      |
-|--------------------------------|--------------------------------------------------------------------------------------            |
-| `/`                            | Returns the list of namespaces in `database`                                                     |
-| `/<namespace>/`                | Returns details on `namespace` api including its `kinds` and urls                                |
-| `/<namespace>/openapi.json`    | Returns the openapi spec definition of the `namespace` api (generated from `metadata`)           |
-| `/<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the `namespace` api (generated from `metadata`) |
-| `/<namespace>/<kind>/`         | Returns a list of entity values of `kind`                                                        |
-| `/<namespace>/<kind>/<key>`    | Returns the entity value of `key`                                                                |
-| `/<namespace>/<kind>/?foo=bar` | Returns a list of entity values of `kind` for which `foo` property is equal to `bar`             |
+| url                                | Description                                                                                      |
+|------------------------------------|--------------------------------------------------------------------------------------            |
+| `/`                                | Redirects to `/api/`                                                                             |
+| `/api/`                            | Returns the list of namespaces in `database`                                                     |
+| `/api/<namespace>/`                | Returns details on `namespace` api including its `kinds` and urls                                |
+| `/api/<namespace>/openapi.json`    | Returns the openapi spec definition of the `namespace` api (generated from `metadata`)           |
+| `/api/<namespace>/swagger-ui.html` | Returns the Swagger UI (documentation portal) of the `namespace` api (generated from `metadata`) |
+| `/api/<namespace>/<kind>/`         | Returns a list of entity values of `kind`                                                        |
+| `/api/<namespace>/<kind>/<key>`    | Returns the entity value of `key`                                                                |
+| `/api/<namespace>/<kind>/?foo=bar` | Returns a list of entity values of `kind` for which `foo` property is equal to `bar`             |
 
 <br>
 
@@ -75,7 +77,7 @@ with:
 ## 4. Write Data to Datastore ✍️
 
 > We present below:
-> 
+>
 > 1. how to write data manually to datastore at the expected format
 > 2. how you can export a BigQuery table in datastore at expected format with one sql query.
 
@@ -140,11 +142,3 @@ call bigfunctions.eu.export_table_to_datastore(
 ## 5. GET your Data! 😎
 
 Once you've deployed `data-api` & wrote data to datastore (+ give datastore.user role to cloud run service account) you can GET the documentation and your data on exposed routes:
-
-
-
-
-
-
-
-
