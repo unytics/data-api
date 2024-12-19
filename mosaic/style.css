@@ -12,7 +12,14 @@
     100% { transform: rotate(360deg); }
 }
 
-select#selector {
+
+#selector {
     padding: 1em;
     border-color: var(--md-primary-fg-color);
+}
+#view {
+    width: 100%;
+}
+#yaml {
+    white-space: pre-wrap;
 }

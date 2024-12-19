@@ -1,0 +1,58 @@
+meta:
+  title: Sorted Bars
+  description: >
+    Sort and limit an aggregate bar chart of gold medals by country.
+data:
+  costs_by_user_day: { file: data/costs_by_user_day_000000000000.parquet }
+params:
+  click: { select: single }
+  domain: [sun, fog, drizzle, rain, snow]
+  colors: ['#e7ba52', '#a7a7a7', '#aec7e8', '#1f77b4', '#9467bd']
+vconcat:
+# - input: menu
+#   label: Sport
+#   as: $query
+#   from: costs_by_user_day
+#   column: sport
+#   value: aquatics
+# - vspace: 10
+  - hconcat:
+    - plot:
+      - mark: lineY
+        data: { from: costs_by_user_day, optimize: false, filterBy: $click }
+        x: date
+        y: { sum: cost }
+        z: user
+        stroke: user
+        strokeOpacity: 0.9
+        sort: { y: -x, limit: 10 }
+        curve: monotone-x
+      - select: intervalX
+        as: $range
+        brush: { fill: none, stroke: '#888' }
+      - select: highlight
+        by: $range
+        fill: '#ccc'
+        fillOpacity: 0.2
+      - legend: color
+        as: $click
+        columns: 1
+    - plot:
+      - mark: barX
+        data: { from: costs_by_user_day }
+        x: { sum: cost }
+        y: user
+        fill: steelblue
+        sort: { y: -x, limit: 10 }
+      - select: toggleY
+        as: $click
+      - select: highlight
+        by: $click
+      xLabel: Gold Medals
+      yLabel: Nationality
+      yLabelAnchor: top
+      marginTop: 15
+  - input: table
+    from: costs_by_user_day
+    filterBy: $click
+height: 300
