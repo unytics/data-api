@@ -24,16 +24,15 @@ self.query = async (sql) => {
 let wasm;
 
 
-export async function load(specURL, baseURL, viewElement, yamlElement) {
+export async function load(spec, baseURL, viewElement, yamlElement) {
   const loader1 = document.createElement('div');
   loader1.classList.add('loader');
   viewElement.replaceChildren(loader1);
-  const loader2 = document.createElement('div');
   loader2.classList.add('loader');
-  yamlElement.replaceChildren(loader2);
+  // const loader2 = document.createElement('div');
+  // yamlElement.replaceChildren(loader2);
 
-  const specContent = await fetch(specURL).then(res => res.text())
-  const spec = yaml.parse(specContent);
+  spec = yaml.parse(spec);
   let connector = wasm || (wasm = wasmConnector());
   coordinator.databaseConnector(connector);
 
@@ -52,9 +51,9 @@ export async function load(specURL, baseURL, viewElement, yamlElement) {
   const p = document.createElement('p');
   p.innerText = (spec.meta && spec.meta.description) ? spec.meta.description : '';
 
-  const code = document.createElement('code');
-  code.innerText = specContent;
+  // const code = document.createElement('code');
+  // code.innerText = specContent;
 
   viewElement.replaceChildren(title, p, dash.element);
-  yamlElement.replaceChildren(code);
+  // yamlElement.replaceChildren(code);
 }

@@ -1,9 +1,49 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://www.unpkg.com/monaco-editor@0.52.2/min/vs/editor/editor.main.css"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  </head>
+  <body >
+  <section class="section">
+    <div class="container is-fluid">
+      <h1 class="title">
+        Hello World
+      </h1>
+      <p class="subtitle">
+        My first website with <strong>Bulma</strong>!
+      </p>
 
-<link rel="stylesheet" href="./style.css">
+      <div class="columns"  >
+        <div class="column is-4"  >
+          <button class="button" id="run">Run!</button>
+          <div id="editor" style="height: 100vh; width: 100%;"></div>
+        </div>
+        <div class="column">
+          <select id="selector"></select>
+          <div id="view"></div>
+          <div id="yaml"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
-<select id="selector"></select>
-<div id="view"></div>
-<div id="yaml"></div>
+  <!-- <button id="editor-click">Get Editor Content</button> -->
 
-<script type="module" src="./script.js"></script>
+  <script>
+      var require = { paths: { vs: 'https://www.unpkg.com/monaco-editor@0.52.2/min/vs' } };
+  </script>
+  <script src="https://www.unpkg.com/monaco-editor@0.52.2/min/vs/loader.js"></script>
+  <script src="https://www.unpkg.com/monaco-editor@0.52.2/min/vs/editor/editor.main.js"></script>
+
+
+  <script type="module" src="./script.js"></script>
+
+  </body>
+</html>

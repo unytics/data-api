@@ -20,14 +20,132 @@ selector.innerHTML = (
 );
 
 async function loadDashboard() {
-  const selectedElement = selector.item(selector.selectedIndex);
-  const baseURL = selectedElement.getAttribute('base-url');
-  const specURL = `${baseURL}${selector.value}`;
-  console.log('baseURL', baseURL);
-  console.log('specURL', specURL);
-  await load(specURL, baseURL, view, yaml);
+  // const selectedElement = selector.item(selector.selectedIndex);
+  // const baseURL = selectedElement.getAttribute('base-url');
+  // const specURL = `${baseURL}${selector.value}`;
+  // const specContent = await fetch(specURL).then(res => res.text())
+  // console.log('baseURL', baseURL);
+  // console.log('specURL', specURL);
+  const spec = editor.getValue();
+  const baseURL = `${window.location.origin}/`;
+  await load(spec, baseURL, view, yaml);
 }
 
 selector.addEventListener('change', loadDashboard);
+
+
+
+
+
+
+
+
+
+
+var editor = monaco.editor.create(document.getElementById('editor'), {
+  value: `
+meta:
+  title: Sorted Bars
+  description: >
+    Sort and limit an aggregate bar chart of gold medals by country.
+data:
+  costs_by_user_day: { file: data/costs_by_user_day_000000000000.parquet }
+  top_users: >
+    select user from costs_by_user_day group by user order by sum(cost) desc limit 10
+params:
+  # user: {select: 'single'}
+  domain: [sun, fog, drizzle, rain, snow]
+  colors: ['#e7ba52', '#a7a7a7', '#aec7e8', '#1f77b4', '#9467bd']
+vconcat:
+# - input: menu
+#   label: Sport
+#   as: $query
+#   from: costs_by_user_day
+#   column: sport
+#   value: aquatics
+# - vspace: 10
+#  - input: search
+#    label: User
+#    # filterBy: $category
+#    as: $user
+#    from: costs_by_user_day
+#    column: user
+#    type: contains
+#  - plot:
+#    - mark: ruleY
+#      data: [0]
+#    - mark: lineY
+#      data: { from: costs_by_user_day, optimize: false, filterBy: $user }
+#      x: date
+#      y: { sum: cost }
+#      z: user
+#      stroke: steelblue
+#      strokeOpacity: 0.9
+#      curve: monotone-x
+#    - { select: nearestX, channels: ['z'], as: $user }
+#    - { select: highlight, by: $user }
+#    - mark: dot
+#      data: { from: costs_by_user_day }
+#      x: date
+#      y: { sum: cost }
+#      z: user
+#      r: 2
+#      fill: currentColor
+#      select: nearestX
+#    - mark: text
+#      data: { from: costs_by_user_day }
+#      x: date
+#      y: user
+#      text: user
+#      fill: currentColor
+#      dy: -8
+#      select: nearestX
+  # - plot:
+  #   - mark: lineY
+  #     data: { from: costs_by_user_day, optimize: false, filterBy: $user }
+  #     x: date
+  #     y: { sum: cost }
+  #     stroke: user
+  #     strokeOpacity: 0.9
+  #     curve: monotone-x
+  #   - select: intervalX
+  #     as: $range
+  #     brush: { fill: none, stroke: '#888' }
+  #   - select: highlight
+  #     by: $range
+  #     fill: '#ccc'
+  #     fillOpacity: 0.2
+  #   - legend: color
+  #     as: $user
+  #     columns: 1
+  - plot:
+    - mark: barX
+      data: { from: costs_by_user_day, filterBy: $user }
+      x: { sum: cost }
+      y: user
+      fill: steelblue
+      sort: { y: -x, limit: 10 }
+    - select: toggleY
+      as: $user
+    - select: highlight
+      by: $user
+    xLabel: Gold Medals
+    yLabel: Nationality
+    yLabelAnchor: top
+    marginTop: 15
+  - input: table
+    from: costs_by_user_day
+    filterBy: $user
+height: 300
+          `,
+  language: 'yaml',
+          theme: "vs-dark",
+          fontSize: 12,
+          minimap: { enabled: false },
+          // automaticLayout: true,
+});
+
+const runButton = document.getElementById('run');
+runButton.addEventListener('click', loadDashboard);
 
 loadDashboard();

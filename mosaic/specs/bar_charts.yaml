@@ -1,11 +1,18 @@
+
 meta:
   title: Sorted Bars
   description: >
     Sort and limit an aggregate bar chart of gold medals by country.
 data:
   costs_by_user_day: { file: data/costs_by_user_day_000000000000.parquet }
+  top_users: >
+    select user from costs_by_user_day group by user order by sum(cost) desc limit 10
+  costs_by_user_day_top: >
+    select *
+    from costs_by_user_day
+    where user in (select user from top_users)
 params:
-  click: { select: single }
+  # user: {select: 'single'}
   domain: [sun, fog, drizzle, rain, snow]
   colors: ['#e7ba52', '#a7a7a7', '#aec7e8', '#1f77b4', '#9467bd']
 vconcat:
@@ -16,43 +23,36 @@ vconcat:
 #   column: sport
 #   value: aquatics
 # - vspace: 10
+  - input: search
+    label: User
+    as: $user
+    from: costs_by_user_day
+    column: user
+    type: contains
   - hconcat:
     - plot:
-      - mark: lineY
-        data: { from: costs_by_user_day, optimize: false, filterBy: $click }
+      - mark: barY
+        data: { from: costs_by_user_day_top, filterBy: $user }
         x: date
         y: { sum: cost }
-        z: user
-        stroke: user
-        strokeOpacity: 0.9
-        sort: { y: -x, limit: 10 }
-        curve: monotone-x
-      - select: intervalX
-        as: $range
-        brush: { fill: none, stroke: '#888' }
-      - select: highlight
-        by: $range
-        fill: '#ccc'
-        fillOpacity: 0.2
-      - legend: color
-        as: $click
-        columns: 1
+        fill: user
+        sort: { y: -fill }
     - plot:
       - mark: barX
-        data: { from: costs_by_user_day }
+        data: { from: costs_by_user_day, filterBy: $user }
         x: { sum: cost }
         y: user
         fill: steelblue
         sort: { y: -x, limit: 10 }
       - select: toggleY
-        as: $click
+        as: $user
       - select: highlight
-        by: $click
+        by: $user
       xLabel: Gold Medals
       yLabel: Nationality
       yLabelAnchor: top
       marginTop: 15
   - input: table
     from: costs_by_user_day
-    filterBy: $click
+    filterBy: $user
 height: 300
