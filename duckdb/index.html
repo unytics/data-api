@@ -10,8 +10,7 @@
     <button id="count">count</button>
 
     <script type="module">
-      import * as duckdbduckdbWasm from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.28.1-dev106.0/+esm";
-      window.duckdbduckdbWasm = duckdbduckdbWasm;
+      import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.28.1-dev106.0/+esm";
 
       const loadButton = document.getElementById('load');
       loadButton.addEventListener('click', load);
@@ -19,7 +18,6 @@
       countButton.addEventListener('click', count);
 
       const getDb = async () => {
-        const duckdb = window.duckdbduckdbWasm;
         if (window._db) {
           return window._db;
         }
