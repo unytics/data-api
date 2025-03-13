@@ -1,0 +1,54 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+
+class LineChart extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  get chartElement() {
+    return this.shadowRoot.getElementById('chart')
+  }
+
+  connectedCallback() {
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = '<div><canvas id="chart"></canvas></div>';
+    this.render();
+  }
+
+  render() {
+    if (this.chart) {
+        this.chart.destroy();
+        this.chart = undefined;
+    }
+    this.chart = new Chart(this.chartElement, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+
+}
+
+customElements.define("line-chart", LineChart);
+
+</script>
+
+
+<line-chart id='line-chart-id'></line-chart>
