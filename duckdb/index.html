@@ -8,11 +8,21 @@
   <body>
     <button id="load">load</button>
     <button id="count">count</button>
-    <script>
+
+    <script type="module">
+      import * as duckdbduckdbWasm from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.28.1-dev106.0/+esm";
+      window.duckdbduckdbWasm = duckdbduckdbWasm;
+
+      const loadButton = document.getElementById('load');
+      loadButton.addEventListener('click', load);
+      const countButton = document.getElementById('count');
+      countButton.addEventListener('click', count);
+
       const getDb = async () => {
         const duckdb = window.duckdbduckdbWasm;
-        // @ts-ignore
-        if (window._db) return window._db;
+        if (window._db) {
+          return window._db;
+        }
         const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
 
         // Select a bundle based on browser checks
@@ -34,15 +44,6 @@
         window._db = db;
         return db;
       };
-    </script>
-    <script type="module">
-      import * as duckdbduckdbWasm from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.28.1-dev106.0/+esm";
-      window.duckdbduckdbWasm = duckdbduckdbWasm;
-
-      const loadButton = document.getElementById('load');
-      loadButton.addEventListener('click', load);
-      const countButton = document.getElementById('count');
-      countButton.addEventListener('click', count);
 
       async function load() {
           getDb().then(async (db) => {
@@ -79,5 +80,8 @@
       }
 
     </script>
+
+
+
   </body>
 </html>
