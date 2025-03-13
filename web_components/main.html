@@ -4,6 +4,10 @@
 
 
 class LineChart extends HTMLElement {
+  static get observedAttributes() {
+    return ['render'];
+  }
+
   constructor() {
     super();
   }
@@ -18,35 +22,46 @@ class LineChart extends HTMLElement {
     this.render();
   }
 
+  attributeChangedCallback(name, oldValue, newValue) {
+    this.render();
+  }
+
   render() {
     if (this.chart) {
         this.chart.destroy();
         this.chart = undefined;
     }
-    this.chart = new Chart(this.chartElement, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+    this.chart = new Chart(this.chartElement, window.data);
   }
 
 
 }
 
 customElements.define("line-chart", LineChart);
+
+window.data = {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+};
+
+function foo() {
+  window.data.data.labels[0] = (Math.random() + 1).toString(36).substring(7);
+  document.getElementById('line-chart-id').setAttribute('render', 'now');
+}
 
 </script>
 
