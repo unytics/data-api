@@ -21,10 +21,10 @@
         if (window._db) {
           return window._db;
         }
-        const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
 
         // Select a bundle based on browser checks
-        const bundle = await duckdb.selectBundle(JSDELIVR_BUNDLES);
+        const jsdelivr_bundles = duckdb.getJsDelivrBundles();
+        const bundle = await duckdb.selectBundle(jsdelivr_bundles);
 
         const worker_url = URL.createObjectURL(
           new Blob([`importScripts("${bundle.mainWorker}");`], {
@@ -44,29 +44,20 @@
       };
 
       async function load() {
-          getDb().then(async (db) => {
-            const conn = await db.connect();
-            const stmt = await conn.query(
-              `create table athletes as from "https://idl.uw.edu/mosaic/data/athletes.parquet"`
-            );
-            console.log('load');
-            await conn.close();
-          });
-
-
-
+        const db = await getDb();
+        const conn = await db.connect();
+        const stmt = await conn.query(
+          `create table athletes as from "https://idl.uw.edu/mosaic/data/athletes.parquet"`
+        );
+        console.log('load');
+        await conn.close();
       }
 
       async function count() {
-          getDb().then(async (db) => {
-            // Create a new connection
-            const conn = await db.connect();
-            console.log((await conn.query(`select count(*) as nb from athletes`)).toArray().map((row) => row.toJSON()));
-            await conn.close();
-
-
-          });
-
+        const db = await getDb();
+        const conn = await db.connect();
+        console.log((await conn.query(`select count(*) as nb from athletes`)).toArray().map((row) => row.toJSON()));
+        await conn.close();
       }
 
       self.query = async () => {
@@ -76,6 +67,9 @@
         await conn.close();
         return result;
       }
+
+      getDb();
+
 
     </script>
 
