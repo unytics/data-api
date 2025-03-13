@@ -12,11 +12,6 @@
     <script type="module">
       import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.28.1-dev106.0/+esm";
 
-      const loadButton = document.getElementById('load');
-      loadButton.addEventListener('click', load);
-      const countButton = document.getElementById('count');
-      countButton.addEventListener('click', count);
-
       const getDb = async () => {
         if (window._db) {
           return window._db;
@@ -66,8 +61,16 @@
         }
       };
 
+    </script>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
 
+        const loadButton = document.getElementById('load');
+        loadButton.addEventListener('click', window.duckdb.load);
+        const countButton = document.getElementById('count');
+        countButton.addEventListener('click', window.duckdb.count);
+      });
     </script>
 
 
